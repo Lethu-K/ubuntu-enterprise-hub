@@ -1,0 +1,12 @@
+<h1>Ubuntu Enterprise Hub</h1>
+<p>Supporting local businesses together</p>
+
+{% for b in businesses %}
+  <div style="border:1px solid black; padding:10px; margin:10px;">
+    <h2>{{ b.name }}</h2>
+    <p>{{ b.description }}</p>
+    <p>Category: {{ b.category }} | Location: {{ b.location }}</p>
+  </div>
+{% empty %}
+  <p>No businesses yet. Add one in admin!</p>
+{% endfor %}
