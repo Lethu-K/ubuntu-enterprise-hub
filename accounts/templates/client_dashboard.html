@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{font-family:Arial;margin:0;background:#f4f4f4}
+.top{background:#1a1a2e;color:white;padding:20px;display:flex;justify-content:space-between}
+.top a{color:white;text-decoration:none;background:#e94560;padding:8px 15px;border-radius:20px}
+.container{padding:20px;max-width:900px;margin:auto}
+.card{background:white;padding:15px;border-radius:10px;margin-top:10px}
+.card button{background:#e94560;color:white;border:none;padding:10px 20px;border-radius:8px}
+</style>
+</head>
+<body>
+<div class="top">
+  <h2>Ubuntu Enterprise Hub</h2>
+  <div>Hi, {{ user.username }} | <a href="/accounts/logout/">Logout</a></div>
+</div>
+
+<div class="container">
+  <h1>Find a trusted service near you</h1>
+
+  <h2>Available Services</h2>
+  {% for s in services %}
+  <div class="card">
+    <b>{{ s.title }}</b> - R{{ s.price }} | {{ s.category }} | by {{ s.agent.username }}<br>
+    {{ s.description }}<br><br>
+    <a href="/accounts/book/{{ s.id }}/"><button>Book Now</button></a>
+  </div>
+  {% empty %}
+  <p>No services yet. Ask an agent to add one!</p>
+  {% endfor %}
+
+  <h2>My Bookings</h2>
+  {% for b in my_bookings %}
+  <div class="card">
+    {{ b.service.title }} - {{ b.agent.username }} - <b>{{ b.status }}</b><br>
+    {{ b.message }}
+  </div>
+  {% empty %}
+  <p>No bookings yet.</p>
+  {% endfor %}
+</div>
+</body>
+</html>

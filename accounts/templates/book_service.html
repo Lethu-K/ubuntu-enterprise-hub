@@ -1,0 +1,9 @@
+<h2>Book {{ service.title }}</h2>
+<p>Agent: {{ service.agent.username }} | Price: R{{ service.price }}</p>
+<p>{{ service.description }}</p>
+<form method="POST">{% csrf_token %}
+Message / When do you need it?<br>
+<textarea name="message" placeholder="e.g. Tomorrow 10am, East London"></textarea><br><br>
+<button type="submit">Confirm Booking</button>
+</form>
+<a href="/accounts/client-dashboard/">Back</a>
