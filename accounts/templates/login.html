@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login - Ubuntu Enterprise Hub</title>
+<style>
+body { margin:0; font-family:Arial; background:#111827; display:flex; justify-content:center; align-items:center; min-height:100vh; }
+.card { background:white; width:380px; padding:30px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.3); }
+.card h2 { margin:0 0 5px; font-size:26px; }
+.card p { color:#6b7280; margin:0 0 20px; }
+label { font-weight:bold; font-size:14px; }
+input { width:100%; padding:12px; margin:6px 0 16px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box; }
+button { width:100%; background:#2563eb; color:white; padding:13px; border:none; border-radius:8px; font-size:16px; font-weight:bold; cursor:pointer; }
+button:hover { background:#1d4ed8; }
+.error { background:#fee2e2; color:#b91c1c; padding:10px; border-radius:8px; margin-bottom:15px; }
+.link { text-align:center; margin-top:15px; }
+.link a { color:#2563eb; text-decoration:none; font-weight:bold; }
+.logo { text-align:center; font-size:32px; margin-bottom:10px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">🌍</div>
+  <h2>Welcome Back</h2>
+  <p>Login to Ubuntu Enterprise Hub</p>
+
+  {% if error %}
+  <div class="error">{{ error }}</div>
+  {% endif %}
+
+  <form method="POST" autocomplete="off">
+    {% csrf_token %}
+    <label>Username</label>
+    <input type="text" name="username" autocomplete="off" placeholder="Your username" required>
+
+    <label>Password</label>
+    <input type="password" name="password" autocomplete="new-password" placeholder="Your password" required>
+
+    <button type="submit">Login →</button>
+  </form>
+
+  <div class="link">
+    Don't have an account? <a href="/accounts/signup/">Sign up</a>
+  </div>
+</div>
+</body>
+</html>

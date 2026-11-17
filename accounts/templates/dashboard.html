@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard - Ubuntu Enterprise Hub</title>
+<style>
+body { margin:0; font-family: Arial; background:#f4f6f8; display:flex; }
+.sidebar { width:220px; background:#111827; color:white; min-height:100vh; padding:20px; }
+.sidebar a { color:white; display:block; text-decoration:none; padding:10px; border-radius:8px; margin:5px 0; }
+.sidebar a:hover { background:#374151; }
+.main { flex:1; padding:30px; }
+.cards { display:flex; gap:20px; flex-wrap:wrap; }
+.card { background:white; padding:20px; border-radius:12px; flex:1; min-width:180px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.card h3 { margin:0; color:#6b7280; font-size:14px; }
+.card p { font-size:28px; font-weight:bold; margin:10px 0 0; }
+.btn { background:#2563eb; color:white; padding:12px 18px; border:none; border-radius:8px; text-decoration:none; display:inline-block; margin-top:20px; }
+.box { background:white; padding:20px; border-radius:12px; margin-top:20px; }
+</style>
+</head>
+<body>
+<div class="sidebar">
+  <h2>Ubuntu Hub</h2>
+  <a href="/accounts/dashboard/">🏠 Dashboard</a>
+  <a href="#">🏢 My Businesses</a>
+  <a href="#">👤 Profile</a>
+  <a href="/accounts/login/">🚪 Logout</a>
+</div>
+
+<div class="main">
+  <h1>Welcome back, {{ user.username }} 👋</h1>
+  <p>Account type: {{ user.profile.user_type }}</p>
+
+  <div class="cards">
+    <div class="card"><h3>My Businesses</h3><p>0</p></div>
+    <div class="card"><h3>Account Status</h3><p>Active</p></div>
+    <div class="card"><h3>Profile</h3><p>Complete</p></div>
+  </div>
+
+  <div class="box">
+    <h3>Quick Actions</h3>
+    <p>You are logged in as <b>{{ user.username }}</b> - {{ user.email }}</p>
+    <a class="btn" href="#">+ Add Business</a>
+  </div>
+</div>
+</body>
+</html>
