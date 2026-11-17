@@ -1,12 +1,53 @@
-<h1>Ubuntu Enterprise Hub</h1>
-<p>Supporting local businesses together</p>
-
-{% for b in businesses %}
-  <div style="border:1px solid black; padding:10px; margin:10px;">
-    <h2>{{ b.name }}</h2>
-    <p>{{ b.description }}</p>
-    <p>Category: {{ b.category }} | Location: {{ b.location }}</p>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ubuntu Enterprise Hub</title>
+<style>
+body { margin:0; font-family:Arial; background:#111827; color:white; }
+.nav { display:flex; justify-content:space-between; padding:20px 40px; align-items:center; }
+.nav a { color:white; text-decoration:none; margin-left:15px; font-weight:bold; }
+.hero { text-align:center; padding:60px 20px 40px; }
+.hero h1 { font-size:48px; margin:0; }
+.hero p { color:#d1d5db; font-size:18px; max-width:600px; margin:20px auto; }
+.btn { display:inline-block; padding:14px 28px; border-radius:10px; text-decoration:none; font-weight:bold; margin:5px; }
+.btn-blue { background:#2563eb; color:white; }
+.btn-white { background:white; color:#111827; }
+.section { background:#f4f6f8; color:#111827; padding:30px; }
+.business-grid { display:flex; gap:20px; flex-wrap:wrap; justify-content:center; }
+.biz { background:white; padding:20px; border-radius:14px; width:260px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.biz h2 { margin:0 0 10px; }
+.biz p { color:#4b5563; }
+</style>
+</head>
+<body>
+<div class="nav">
+  <b>🌍 Ubuntu Hub</b>
+  <div>
+    <a href="/accounts/logout/">Logout</a>
+    <a href="/accounts/signup/">Sign Up</a>
   </div>
-{% empty %}
-  <p>No businesses yet. Add one in admin!</p>
-{% endfor %}
+</div>
+
+<div class="hero">
+  <h1>Grow Your Business<br>Together.</h1>
+  <p>Supporting local businesses together. Connect entrepreneurs, investors and mentors in one place.</p>
+  <a class="btn btn-blue" href="/accounts/signup/">Get Started →</a>
+  <a class="btn btn-white" href="/accounts/login/">Login</a>
+</div>
+
+<div class="section">
+  <h2 style="text-align:center;">Featured Businesses</h2>
+  <div class="business-grid">
+    {% for b in businesses %}
+    <div class="biz">
+      <h2>{{ b.name }}</h2>
+      <p>{{ b.description }}</p>
+      <p><small>Category: {{ b.category }} | Location: {{ b.location }}</small></p>
+    </div>
+    {% empty %}
+    <p>No businesses yet. Add one in admin!</p>
+    {% endfor %}
+  </div>
+</div>
+</body>
+</html>
